@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>หัวใจของเรา 💘</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #0d0d0d;
+      font-family: 'Kanit', sans-serif;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    #message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff8dd3;
+      font-size: 2.5em;
+      text-align: center;
+      animation: float 3s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes float {
+      0% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-15px); }
+      100% { transform: translate(-50%, -50%) translateY(0); }
+    }
+
+    #loveBtn {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff6699;
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.3s ease;
+    }
+
+    #loveBtn:hover {
+      background: #ff3366;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="heartCanvas"></canvas>
+<div id="message">รักเธอนะ 💖</div>
+<button id="loveBtn">คลิกแล้วหัวใจเต้น 💓</button>
+
+<!-- 🔊 เพลงเบาๆ autoplay -->
+<audio id="bgm" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_9f85c7bc24.mp3?filename=romantic-piano-ambient-122240.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const canvas = document.getElementById("heartCanvas");
+  const ctx = canvas.getContext("2d");
+  const btn = document.getElementById("loveBtn");
+  const bgm = document.getElementById("bgm");
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  function heartPath(t, size = 1) {
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y = 13
