@@ -1,90 +1,105 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Heart</title>
+  <title>Surprise for You Babe</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      overflow: hidden;
       background: #F893B5;
-      font-family: 'Kanit', sans-serif;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
     }
 
-    canvas {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    #message {
+    h1 {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #F893B5;
-      font-size: 2.5em;
-      text-align: center;
-      animation: float 3s ease-in-out infinite;
-      z-index: 2;
+      font-size: 2rem;
+      animation: float 3s infinite ease-in-out;
     }
 
     @keyframes float {
-      0% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-15px); }
-      100% { transform: translate(-50%, -50%) translateY(0); }
+      0%, 100% { transform: translate(-50%, -48%); }
+      50% { transform: translate(-50%, -52%); }
     }
 
-    #loveBtn {
+    .heart {
       position: absolute;
-      bottom: 30px;
+      width: 100px;
+      height: 90px;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      background: red;
+      animation: pulse 1s infinite;
+      clip-path: path('M10,30
+        A20,20 0 0,1 50,30
+        A20,20 0 0,1 90,30
+        Q90,60 50,90
+        Q10,60 10,30 Z');
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.2); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    button {
+      position: absolute;
+      bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
-      background: #F893B5;
+      padding: 15px 25px;
+      font-size: 18px;
       border: none;
-      color: white;
-      font-size: 1.2em;
-      padding: 12px 24px;
       border-radius: 30px;
+      background: #FFBDCB;
+      color: white;
       cursor: pointer;
-      z-index: 2;
-      transition: background 0.3s ease;
+      transition: 0.3s;
     }
 
-    #loveBtn:hover {
-      background: #F893B5;
+    button:hover {
+      background: #EB78B9;
+    }
+
+    /* Hide scrollbar */
+    ::-webkit-scrollbar {
+      display: none;
     }
   </style>
 </head>
 <body>
 
-<canvas id="heartCanvas"></canvas>
-<div id="message">รักเบบี๋นะ</div>
-<button id="loveBtn">คลิกแล้วหัวใจเต้น</button>
+  <!-- เพลง -->
+  <audio autoplay loop>
+    <source src="BADMIXY-Just-For-You.mp3" type="audio/mp3">
+  </audio>
 
-<!-- 🔊 เพลงเบาๆ autoplay -->
-<audio id="bgm" autoplay loop>
-  <source src="https://raw.githubusercontent.com/Lalisss/HeartforU/main/BADMIXY-Just-For-You-_-Feat.-Jeep-_.mp3" type="audio/mp3">
-</audio>
+  <!-- ข้อความบอกรัก -->
+  <h1>รักเบบี๋ที่สุดในโลกเลย</h1>
 
-<script>
-  const canvas = document.getElementById("heartCanvas");
-  const ctx = canvas.getContext("2d");
-  const btn = document.getElementById("loveBtn");
-  const bgm = document.getElementById("bgm");
+  <!-- หัวใจเต้น -->
+  <div class="heart" id="heart"></div>
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
+  <!-- ปุ่ม -->
+  <button onclick="makeHeartBeat()">คลิกแล้วหัวใจเต้น</button>
 
-  window.addEventListener("resize", resizeCanvas);
-  resizeCanvas();
+  <script>
+    function makeHeartBeat() {
+      const heart = document.getElementById("heart");
+      heart.style.animation = "pulse 0.5s infinite";
+      setTimeout(() => {
+        heart.style.animation = "pulse 1s infinite";
+      }, 3000);
+    }
+  </script>
 
-  function heartPath(t, size = 1) {
-    const x = 16 * Math.pow(Math.sin(t), 3);
-    const y = 13
+</body>
+</html>
