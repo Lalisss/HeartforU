@@ -84,38 +84,31 @@
 
   <!-- เพลงอัตโนมัติ -->
   <audio id="bgMusic">
-    <source src="https://raw.githubusercontent.com/Lalisss/HeartforU/main/BADMIXY-Just-For-You.mp3" type="audio/mpeg">
-  </audio>
+  <source src="BADMIXY-Just-For-You.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- ข้อความบอกรัก -->
-  <h1>รักคนนี้ที่สุดในโลกเลย 💗</h1>
-
-  <!-- หัวใจ -->
-  <div class="heart" id="heart"></div>
-
-  <!-- ปุ่มหัวใจเต้น -->
-  <!-- ปุ่ม -->
-<button onclick="makeHeartBeat()">คลิกแล้วหัวใจเต้น 💓</button>
+<button id="playBtn">คลิกแล้วหัวใจเต้น 💓</button>
 
 <script>
-  // ฟังก์ชันหัวใจเต้น + เริ่มเล่นเพลง
-  function makeHeartBeat() {
-    const heart = document.getElementById("heart");
+  window.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById("bgMusic");
+    const heart = document.getElementById("heart");
+    const btn = document.getElementById("playBtn");
 
-    // เล่นเพลง
-    music.volume = 0.2; // ลดเสียงเหลือ 20%
-music.play().catch((e) => {
-  console.log("Music play error:", e);
-});
+    btn.addEventListener("click", () => {
+      // ✅ ลดเสียงก่อนสั่งเล่น
+      music.volume = 0.05; // 🔉 เหลือแค่ 5%
+      music.play().catch((e) => {
+        console.log("Music play error:", e);
+      });
 
-
-    // หัวใจเต้น
-    heart.style.animation = "pulse 0.4s infinite";
-    setTimeout(() => {
-      heart.style.animation = "pulse 1.5s infinite";
-    }, 3000);
-  }
+      // หัวใจเต้นเร็วแล้วกลับช้า
+      heart.style.animation = "pulse 0.4s infinite";
+      setTimeout(() => {
+        heart.style.animation = "pulse 1.5s infinite";
+      }, 3000);
+    });
+  });
 </script>
 
 
