@@ -3,27 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For You ❤️</title>
+  <title>For You 💖</title>
   <style>
     body {
       margin: 0;
-      background-color: #ffeef0;
-      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #ffccdd);
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
       overflow: hidden;
     }
 
     h1 {
-      margin-top: 50px;
-      font-size: 2em;
-      color: #d6336c;
+      margin-top: 60px;
+      font-size: 2.5em;
+      color: #d63384;
       animation: float 3s ease-in-out infinite;
+      text-shadow: 1px 1px 3px #fff;
     }
 
     .heart {
       width: 100px;
       height: 90px;
-      background: red;
+      background: #ff5e7e;
       position: relative;
       margin: 50px auto;
       transform: scale(1);
@@ -36,7 +37,7 @@
       position: absolute;
       width: 100px;
       height: 90px;
-      background: red;
+      background: #ff5e7e;
       border-radius: 50%;
     }
 
@@ -52,7 +53,7 @@
 
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      50% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
 
@@ -62,18 +63,20 @@
     }
 
     button {
-      background-color: #ff6b81;
+      background-color: #ff88b7;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 25px;
       font-size: 16px;
       border: none;
-      border-radius: 20px;
+      border-radius: 25px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      background-color: #ff4757;
+      background-color: #ff66a3;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -85,7 +88,7 @@
   </audio>
 
   <!-- ข้อความบอกรัก -->
-  <h1>รักคนนี้ที่สุดในโลกเลย ❤️</h1>
+  <h1>รักคนนี้ที่สุดในโลกเลย 💗</h1>
 
   <!-- หัวใจ -->
   <div class="heart" id="heart"></div>
@@ -96,7 +99,7 @@
   <script>
     function makeHeartBeat() {
       const heart = document.getElementById("heart");
-      heart.style.animation = "pulse 0.5s infinite";
+      heart.style.animation = "pulse 0.4s infinite";
       setTimeout(() => {
         heart.style.animation = "pulse 1.5s infinite";
       }, 3000);
