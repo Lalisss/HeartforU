@@ -104,9 +104,11 @@
     const music = document.getElementById("bgMusic");
 
     // เล่นเพลง
-    music.play().catch((e) => {
-      console.log("Music play error:", e);
-    });
+    music.volume = 0.2; // ลดเสียงเหลือ 20%
+music.play().catch((e) => {
+  console.log("Music play error:", e);
+});
+
 
     // หัวใจเต้น
     heart.style.animation = "pulse 0.4s infinite";
