@@ -83,7 +83,7 @@
 <body>
 
   <!-- เพลงอัตโนมัติ -->
-  <audio id="bgMusic" autoplay loop>
+  <audio id="bgMusic">
     <source src="https://raw.githubusercontent.com/Lalisss/HeartforU/main/BADMIXY-Just-For-You.mp3" type="audio/mpeg">
   </audio>
 
@@ -94,17 +94,28 @@
   <div class="heart" id="heart"></div>
 
   <!-- ปุ่มหัวใจเต้น -->
-  <button onclick="makeHeartBeat()">คลิกแล้วหัวใจเต้น 💓</button>
+  <!-- ปุ่ม -->
+<button onclick="makeHeartBeat()">คลิกแล้วหัวใจเต้น 💓</button>
 
-  <script>
-    function makeHeartBeat() {
-      const heart = document.getElementById("heart");
-      heart.style.animation = "pulse 0.4s infinite";
-      setTimeout(() => {
-        heart.style.animation = "pulse 1.5s infinite";
-      }, 3000);
-    }
-  </script>
+<script>
+  // ฟังก์ชันหัวใจเต้น + เริ่มเล่นเพลง
+  function makeHeartBeat() {
+    const heart = document.getElementById("heart");
+    const music = document.getElementById("bgMusic");
+
+    // เล่นเพลง
+    music.play().catch((e) => {
+      console.log("Music play error:", e);
+    });
+
+    // หัวใจเต้น
+    heart.style.animation = "pulse 0.4s infinite";
+    setTimeout(() => {
+      heart.style.animation = "pulse 1.5s infinite";
+    }, 3000);
+  }
+</script>
+
 
 </body>
 </html>
